@@ -1,0 +1,9 @@
+ALTER TABLE ortobean DROP FOREIGN KEY FK_ortobean_ortograma
+ALTER TABLE ortobean DROP FOREIGN KEY FK_ortobean_idBean
+ALTER TABLE busqueda._alineacion DROP FOREIGN KEY FK__alineacion_simigrama
+ALTER TABLE busqueda._alineacion DROP FOREIGN KEY FK__alineacion_ortograma
+DROP TABLE ortobean
+DROP TABLE busqproducto
+DROP TABLE _ortograma
+DROP TABLE _simigrama
+DROP TABLE busqueda._alineacion
