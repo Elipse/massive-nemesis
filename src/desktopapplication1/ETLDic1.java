@@ -26,7 +26,7 @@ import org.mozilla.universalchardet.UniversalDetector;
  *
  * @author elialva
  */
-public class ETLDic {
+public class ETLDic1 {
 
     private static EntityManager entityManager;
 
@@ -70,6 +70,7 @@ public class ETLDic {
         entityManager.getTransaction().begin();
 
 //        System.exit(0);
+
         String path = "C:\\Users\\IBM_ADMIN\\Documents\\@Projects_Eli\\201309 Finder&Getter\\";
         File file = new File(path + "Book1.csv");
         detector(new String[]{path + "Book1.csv"});
@@ -84,10 +85,9 @@ public class ETLDic {
             String[] split = StringUtils.split(string, ',');
             System.out.println("split[0] " + split[0]);
             System.out.println("split[1] " + split[1]);
-            Productobusq bp = new Productobusq(new Integer(split[0].trim()));
+            Busqproducto bp = new Busqproducto(new Integer(split[0].trim()));
             bp.setContexto(split[1]);
-            bp.setPrioridad(3);
-            ETLDic eTLDic = new ETLDic();
+            ETLDic1 eTLDic = new ETLDic1();
             eTLDic.breakdownContext(split[1], bp);
             entityManager.merge(bp);
         }
@@ -95,7 +95,7 @@ public class ETLDic {
         entityManager.getTransaction().commit();
     }
 
-    private void breakdownContext(String context, Productobusq bp) {
+    private void breakdownContext(String context, Busqproducto bp) {
         String[] split = StringUtils.split(context);
         for (int i = 0; i < split.length; i++) {
             String ortograma = StringUtils.lowerCase(split[i]);
@@ -103,8 +103,7 @@ public class ETLDic {
             Ortograma ortograma1 = new Ortograma(ortograma, createNumegrama(ortograma));
             entityManager.merge(ortograma1);
 
-            ProductoOrtograma ortobean = new ProductoOrtograma(bp.getIdBean(), ortograma);
-            ortobean.setFrecuencia(1);
+            Ortobean ortobean = new Ortobean(ortograma, bp.getIdBean());
             entityManager.merge(ortobean);
 
             String simigrama = Normalizer.normalize(ortograma, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
@@ -132,7 +131,7 @@ public class ETLDic {
             if (ind == 10) {
                 ind = 0;
             }
-            alignment += (char) i;
+            alignment += ind;
         }
 
         return alignment;
@@ -154,8 +153,8 @@ public class ETLDic {
     }
 
     public static List<List<List<String>>> extractOrtogramas(String input, Integer idCandidate) {
-        String queryModel
-                = "select \'<numegrama>\', a.numegrama, a.simigrama, b.ortograma, b.alineacion "
+        String queryModel =
+                "select \'<numegrama>\', a.numegrama, a.simigrama, b.ortograma, b.alineacion "
                 + "from _simigrama as a inner join _alineacion as b "
                 + "                     on         a.simigrama = b.simigrama "
                 + "                     inner join ortobean as c"
@@ -175,5 +174,5 @@ public class ETLDic {
         }
 
         return ortolist;
-    }
+    }  
 }

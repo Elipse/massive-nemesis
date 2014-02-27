@@ -7,6 +7,8 @@
     <class>desktopapplication1.Ortobean</class>
     <class>desktopapplication1.Ortograma</class>
     <class>desktopapplication1.Simigrama</class>
+    <class>desktopapplication1.ProductoOrtograma</class>
+    <class>desktopapplication1.Productobusq</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/busqueda"/>
       <property name="javax.persistence.jdbc.password" value="root"/>
