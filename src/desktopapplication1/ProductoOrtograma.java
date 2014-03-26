@@ -35,12 +35,12 @@ public class ProductoOrtograma implements Serializable {
     protected ProductoOrtogramaPK productoOrtogramaPK;
     @Column(name = "frecuencia")
     private Integer frecuencia;
-    @JoinColumn(name = "ortograma", referencedColumnName = "ortograma", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private Ortograma ortograma1;
     @JoinColumn(name = "idBean", referencedColumnName = "idBean", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Productobusq productobusq;
+    @JoinColumn(name = "ortograma", referencedColumnName = "ortograma", insertable = false, updatable = false)
+    @ManyToOne(optional = false)
+    private Ortograma ortograma1;
 
     public ProductoOrtograma() {
     }
@@ -49,7 +49,7 @@ public class ProductoOrtograma implements Serializable {
         this.productoOrtogramaPK = productoOrtogramaPK;
     }
 
-    public ProductoOrtograma(int idBean, String ortograma) {
+    public ProductoOrtograma(String idBean, String ortograma) {
         this.productoOrtogramaPK = new ProductoOrtogramaPK(idBean, ortograma);
     }
 
@@ -69,20 +69,20 @@ public class ProductoOrtograma implements Serializable {
         this.frecuencia = frecuencia;
     }
 
-    public Ortograma getOrtograma1() {
-        return ortograma1;
-    }
-
-    public void setOrtograma1(Ortograma ortograma1) {
-        this.ortograma1 = ortograma1;
-    }
-
     public Productobusq getProductobusq() {
         return productobusq;
     }
 
     public void setProductobusq(Productobusq productobusq) {
         this.productobusq = productobusq;
+    }
+
+    public Ortograma getOrtograma1() {
+        return ortograma1;
+    }
+
+    public void setOrtograma1(Ortograma ortograma1) {
+        this.ortograma1 = ortograma1;
     }
 
     @Override

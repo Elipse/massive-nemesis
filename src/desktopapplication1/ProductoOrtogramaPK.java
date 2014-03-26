@@ -19,7 +19,7 @@ import javax.persistence.Embeddable;
 public class ProductoOrtogramaPK implements Serializable {
     @Basic(optional = false)
     @Column(name = "idBean")
-    private int idBean;
+    private String idBean;
     @Basic(optional = false)
     @Column(name = "ortograma")
     private String ortograma;
@@ -27,16 +27,16 @@ public class ProductoOrtogramaPK implements Serializable {
     public ProductoOrtogramaPK() {
     }
 
-    public ProductoOrtogramaPK(int idBean, String ortograma) {
+    public ProductoOrtogramaPK(String idBean, String ortograma) {
         this.idBean = idBean;
         this.ortograma = ortograma;
     }
 
-    public int getIdBean() {
+    public String getIdBean() {
         return idBean;
     }
 
-    public void setIdBean(int idBean) {
+    public void setIdBean(String idBean) {
         this.idBean = idBean;
     }
 
@@ -51,7 +51,7 @@ public class ProductoOrtogramaPK implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (int) idBean;
+        hash += (idBean != null ? idBean.hashCode() : 0);
         hash += (ortograma != null ? ortograma.hashCode() : 0);
         return hash;
     }
@@ -63,7 +63,7 @@ public class ProductoOrtogramaPK implements Serializable {
             return false;
         }
         ProductoOrtogramaPK other = (ProductoOrtogramaPK) object;
-        if (this.idBean != other.idBean) {
+        if ((this.idBean == null && other.idBean != null) || (this.idBean != null && !this.idBean.equals(other.idBean))) {
             return false;
         }
         if ((this.ortograma == null && other.ortograma != null) || (this.ortograma != null && !this.ortograma.equals(other.ortograma))) {

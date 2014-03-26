@@ -37,7 +37,7 @@ public class Productobusq implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "idBean")
-    private Integer idBean;
+    private String idBean;
     @Lob
     @Column(name = "contexto")
     private String contexto;
@@ -49,15 +49,15 @@ public class Productobusq implements Serializable {
     public Productobusq() {
     }
 
-    public Productobusq(Integer idBean) {
+    public Productobusq(String idBean) {
         this.idBean = idBean;
     }
 
-    public Integer getIdBean() {
+    public String getIdBean() {
         return idBean;
     }
 
-    public void setIdBean(Integer idBean) {
+    public void setIdBean(String idBean) {
         this.idBean = idBean;
     }
 

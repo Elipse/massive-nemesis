@@ -84,7 +84,7 @@ public class ETLDic {
             String[] split = StringUtils.split(string, ',');
             System.out.println("split[0] " + split[0]);
             System.out.println("split[1] " + split[1]);
-            Productobusq bp = new Productobusq(new Integer(split[0].trim()));
+            Productobusq bp = new Productobusq(split[0].trim());
             bp.setContexto(split[1]);
             bp.setPrioridad(3);
             ETLDic eTLDic = new ETLDic();
